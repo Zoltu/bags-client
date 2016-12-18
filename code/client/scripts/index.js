@@ -168,7 +168,13 @@ Handlebars.registerHelper('titleCase', function (name) {
 });
 
 Handlebars.registerHelper('getBrandName', function (tags) {
-    return Enumerable.From(tags).Where(w=>w.category.name == "brand").Select(s => s.name).Single();
+    var brand = Enumerable.From(tags).Where(w=>w.category.name == "brand").Select(s => s.name).ToArray();
+    if (brand.length > 0) {
+        return brand[0].name;
+    }
+    else{
+        return "";
+    }
 });
 
 Handlebars.registerHelper('categoryIcon', function (name) {
@@ -1187,7 +1193,7 @@ function ShareLink(channel, entity, product_imgurl, product_name, product_brand)
         case 'twitter':
             var tweet_text = "";
             if (entity == "product")
-                tweet_text = product_brand + ": " + product_name;
+                tweet_text = (product_brand != "" ?  product_brand + ": " : "") + product_name;
            
             window.open('https://twitter.com/intent/tweet?text=' + tweet_text + '&url=' + url + '&hashtags=BagCupid', "_blank");
             break;
@@ -1197,7 +1203,7 @@ function ShareLink(channel, entity, product_imgurl, product_name, product_brand)
         case 'pinterest':
             var pin_desc = "";
             if (entity == "product")
-                pin_desc = product_brand + ": " + product_name;
+                pin_desc = (product_brand != "" ? product_brand + ": " : "") + product_name;
             else if (entity == "search") {
                 var path = window.location.pathname;
 
