@@ -170,7 +170,7 @@ Handlebars.registerHelper('titleCase', function (name) {
 Handlebars.registerHelper('getBrandName', function (tags) {
     var brand = Enumerable.From(tags).Where(w=>w.category.name == "brand").Select(s => s.name).ToArray();
     if (brand.length > 0) {
-        return brand[0].name;
+        return brand[0];
     }
     else{
         return "";
