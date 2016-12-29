@@ -1,9 +1,10 @@
-FROM node:6
+FROM node:7
 
 COPY package.json /app/package.json
 WORKDIR /app
-RUN npm install
-COPY wdio.conf.js /app/wdio.conf.js
-COPY tests.js /app/tests.js
+RUN npm install --ignore-scripts --unsafe-perm --loglevel warn
+RUN chmod +x node_modules/.bin/nightwatch
+COPY tests/ /app/tests/
+COPY nightwatch.json /app/nightwatch.json
 
-ENTRYPOINT ["./node_modules/.bin/wdio", "wdio.conf.js"]
+ENTRYPOINT ["node_modules/.bin/nightwatch", "-e", "chrome,firefox"]

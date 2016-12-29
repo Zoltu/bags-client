@@ -1,0 +1,24 @@
+{
+	"src_folders": [ "tests" ],
+	"test_settings": {
+		"default": {
+			"launch_url": "http://bagcupid",
+			"selenium_host": "selenium-hub",
+			"screenshots": {
+				"enabled": true,
+				"on_failure": true,
+				"path": "tests_output"
+			}
+		},
+		"chrome": {
+			"desiredCapabilities": {
+				"browserName": "chrome"
+			}
+		},
+		"firefox": {
+			"desiredCapabilities": {
+				"browserName": "firefox"
+			}
+		}
+	}
+}
