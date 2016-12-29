@@ -18,15 +18,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "functional-tests", "functio
 		docker-compose.yml = docker-compose.yml
 		functional-tests\Dockerfile = functional-tests\Dockerfile
 		functional-tests\Dockerfile-selenium-hub = functional-tests\Dockerfile-selenium-hub
+		functional-tests\nightwatch.json = functional-tests\nightwatch.json
 		functional-tests\package.json = functional-tests\package.json
-		functional-tests\tests.js = functional-tests\tests.js
-		functional-tests\wdio.conf.js = functional-tests\wdio.conf.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hooks", "hooks", "{3A77E2F9-60D7-451E-AF48-799FEACFE932}"
 	ProjectSection(SolutionItems) = preProject
 		hooks\post_push = hooks\post_push
 		hooks\test = hooks\test
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{47ED12DE-CAD5-4EA8-A6C9-8DF402D528F1}"
+	ProjectSection(SolutionItems) = preProject
+		functional-tests\tests\tests.js = functional-tests\tests\tests.js
 	EndProjectSection
 EndProject
 Global
@@ -46,5 +50,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47ED12DE-CAD5-4EA8-A6C9-8DF402D528F1} = {B9BC3B15-B74A-48FD-ADC0-E7C259E301ED}
 	EndGlobalSection
 EndGlobal
