@@ -4,7 +4,7 @@ services:
   selenium-hub:
     image: selenium/hub:3.0.1
     environment:
-      - GRID_THROW_ON_CAPABILITY_NOT_PRESENT=true
+      - GRID_THROW_ON_CAPABILITY_NOT_PRESENT=false
     ports:
       - "4444:4444"
 
