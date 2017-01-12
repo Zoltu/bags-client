@@ -84,7 +84,7 @@ $(window).resize(function () {
     if (g_popupOpened == true) {
         if ($("#product-popup-right-column").height() <= 370) {
             if (!$('html').hasClass('ismobile')) {
-                $("#product-popup-right-column").css('min-height',370);
+                $("#product-popup-right-column").css('min-height', 370);
                 $("#product-popup-right-column .product-popup-buttons").css("position", "absolute");
             }
         }
@@ -93,13 +93,6 @@ $(window).resize(function () {
             $("#product-popup-right-column .product-popup-buttons").css("position", "initial");
         }
     }
-})
-
-Handlebars.registerHelper("colorTag", function (categoryid) {
-    if ($('body').hasClass('design-v2'))
-        return "teal"
-    else
-       return fnColorTag(categoryid);
 });
 
 Handlebars.registerHelper("isSelected", function (categoryid) {
@@ -204,17 +197,6 @@ Handlebars.registerHelper('categoryIcon', function (name) {
             return cssClass = "fa-shopping-bag"
     }
 });
-
-function fnColorTag(categoryid) {
-    var color = '';
-    $.each(g_categories, function (index, category) {
-        if (category.id == categoryid) {
-            color = category.color;
-            return;
-        }
-    });
-    return color;
-}
 
 var category_colors = ["bgm-red", "bgm-blue", "bgm-green", "bgm-lightgreen", "bgm-cyan", "bgm-pink", "bgm-lightblue",
     "bgm-orange", "bgm-purple", "bgm-deeporange", "bgm-teal", "bgm-amber", "bgm-gray", "bgm-indigo", "bgm-lime", "bgm-bluegray", "bgm-deeppurple"];
@@ -489,9 +471,6 @@ function loadTags() {
         minimumInputLength: 0,
         allowClear: true,
         templateSelection: function (data, a) {
-            if ($('body').hasClass('design-v2')) { } else {
-                a.addClass(fnColorTag(data.category_id));
-            }
             return data.text;
         },
         dropdownParent: $(".search-container"),
@@ -596,33 +575,26 @@ function GetProducts() {
                 $(".product-list").html(template({ products: data }));
                
                 if (helptour_running == false) {
-                    if ($('body').hasClass('design-v2')) {
-                        if (window.location.pathname != "/" && window.location.pathname != "/#" && window.location.pathname != "/app") {
-                            $(".banner").hide();
-                        }
-                        else {
-                            $(".banner").show();
-                        }
-                    }
-                    //Add more top padding to bags list so it doesn't go behind expanded header
-
-                    if ($('body').hasClass('design-v2')) {
-                        if (window.location.pathname != "/" && window.location.pathname != "/#" && window.location.pathname != "/app") {
-                            $("#main").css("padding-top", $("#top-search-wrap > .container").height() + 40 + "px");
-                            if ($('body').scrollTop() > 25)
-                                $('body').scrollTop(25);
-                        }
-                        else {
-                            $("#main").css("padding-top", "50px");
-                            $('body').scrollTop(0);
-                        }
+                   
+                    if (window.location.pathname != "/" && window.location.pathname != "/#" && window.location.pathname != "/app") {
+                        $(".banner").hide();
                     }
                     else {
-                        $("#main").css("padding-top", $("#top-search-wrap > .container").height() + 40 + "px");
+                        $(".banner").show();
+                    }
+                    
+                    //Add more top padding to bags list so it doesn't go behind expanded header
 
+                    if (window.location.pathname != "/" && window.location.pathname != "/#" && window.location.pathname != "/app") {
+                        $("#main").css("padding-top", $("#top-search-wrap > .container").height() + 40 + "px");
                         if ($('body').scrollTop() > 25)
                             $('body').scrollTop(25);
                     }
+                    else {
+                        $("#main").css("padding-top", "50px");
+                        $('body').scrollTop(0);
+                    }
+                  
                 }
             }
             else
