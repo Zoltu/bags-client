@@ -14,7 +14,7 @@
 	</script>
 	<!-- End Azure Application Insights -->
 	<!-- Google Analytics -->
-	<script src="//www.google-analytics.com/cx/api.js?experiment=32VOjTOiSYyaJBJTGVIcbA"></script>
+	
 	<script>
 		window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
 		ga('create', 'UA-66024947-3', 'auto');
@@ -22,23 +22,6 @@
 		ga('require', 'outboundLinkTracker', {});
 		ga('require', 'pageVisibilityTracker', {});
 		ga('send', 'pageview');
-		// Ask Google Analytics which variation to show the user.
-		var chosenVariation = cxApi.chooseVariation();
-	</script>
-	<script>
-		// Wait for the DOM to load, then execute the view for the chosen variation.
-		function ApplyDesignExperiemnt() {
-			// Define JavaScript for each page variation of this experiment.
-			switch (chosenVariation) {
-				case 0:
-					//Original: Do nothing. This will render the old design and colors
-					break;
-				case 1:
-					//This will render the new design
-					document.getElementsByTagName('body')[0].className = 'design-v2';
-					break;
-			}
-		};
 	</script>
 
 	<script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -128,7 +111,7 @@
 	<link href="/vendors/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
 	<link href="/vendors/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />
 </head>
-<body onload="ApplyDesignExperiemnt();">
+<body>
 	<div class="banner" style="background-image: url(/img/banner/bag5.jpg)">
 		<div class="caption-text">
 			<div class="container">

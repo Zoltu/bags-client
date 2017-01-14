@@ -24,7 +24,7 @@
 						{{#if tags}}
 							{{#each tags}}
 								{{#ifCond @index "<" 5}}
-									<button index="{{@index}}" tag-id="{{id}}" type="button" class="btn {{colorTag category.id}} tag">#{{category.name}}: {{name}}</button>
+									<button index="{{@index}}" tag-id="{{id}}" type="button" class="btn teal tag">#{{category.name}}: {{name}}</button>
 								{{/ifCond}}
 							{{/each}}
 							{{#isLengthOf tags ">" 5}}
@@ -34,7 +34,7 @@
 										{{#each tags}}
 											{{#ifCond @index ">=" 5}}
 												<li>
-													<button tag-id="{{id}}" type="button" class="btn {{colorTag category.id}} tag">#{{category.name}}: {{name}}</button>
+													<button tag-id="{{id}}" type="button" class="btn teal tag">#{{category.name}}: {{name}}</button>
 												</li>
 											{{/ifCond}}
 										{{/each}}
