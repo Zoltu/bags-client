@@ -4,11 +4,11 @@
 		"default": {
 			"launch_url": "http://bagcupid",
 			"selenium_host": "selenium-hub",
-			"screenshots": {
-				"enabled": true,
-				"on_failure": true,
-				"path": "tests_output"
-			}
+      "screenshots": {
+        "enabled": true,
+        "on_failure": true,
+        "path": "C:/FL/MicahZoltu/HandbagsProject/MicahRepo/bags-client/functional-tests/reports"
+      }
 		},
 		"chrome": {
 			"desiredCapabilities": {
