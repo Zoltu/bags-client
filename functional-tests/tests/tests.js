@@ -23,8 +23,8 @@ module.exports = {
 		browser.end();
 	},
 	'Check Tag in search box for URL with tag filter': function (browser) {
-	    browser.url("http://bagcupid.com/app/tags/3");
-	    browser.waitForElementVisible(".select2-container--default .select2-selection--multiple .select2-selection__choice", 7000);
+		browser.url("http://bagcupid.com/app/tags/3");
+		browser.waitForElementVisible(".select2-container--default .select2-selection--multiple .select2-selection__choice", 7000);
 		browser.end();
 	},
 	'Check for "About US" screen': function (browser) {
@@ -47,7 +47,7 @@ module.exports = {
 		browser.end();
 	},
 	'Side filter should open': function (browser) {
-	    browser.url(process.env.BAG_CUPID_URL);
+		browser.url(process.env.BAG_CUPID_URL);
 		browser.waitForElementVisible("#side-filter-trigger",7000);
 		browser.click("#side-filter-trigger");
 		browser.pause(2000);
@@ -74,9 +74,9 @@ module.exports = {
 		browser.end();
 	},
 	'Check for Min Max prices': function (browser) {
-	    browser.url("https://bagcupid.com/app/minprice/100/maxprice/800");
+		browser.url("https://bagcupid.com/app/minprice/100/maxprice/800");
 
-	    browser.waitForElementVisible('.btn-show-more', 7000);
+		browser.waitForElementVisible('.btn-show-more', 7000);
 
 		browser.getText("#lbl_min_price", function (result) {
 			this.assert.equal(result.value, "100");
