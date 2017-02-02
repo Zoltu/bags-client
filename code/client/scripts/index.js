@@ -1227,6 +1227,7 @@ function RemoveSelectedTags(data) {
 function SkipHelpTourNotification() {
     localStorage.setItem("helptour-seen", "true");
     $(".help-slider-clone").popover("destroy");
+    $(".help-btn-mobile").popover("destroy");
 }
 
 function ExecuteSmartSearch(txtbox) {
