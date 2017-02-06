@@ -7,19 +7,16 @@ module.exports = {
 	},
 	'Check for Product popup': function (browser) {
 		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible('.product-list .product-card:first-child .owl-wrapper > .owl-item:first-child > a', 7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 		browser.click('.product-list .product-card:first-child .owl-wrapper > .owl-item:first-child > a');
 		browser.waitForElementVisible('#product-popup', 7000);
 		browser.end();
 	},
 	'Check for Show More button': function (browser) {
 		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible('.btn-show-more', 7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 		browser.click('.btn-show-more');
-		browser.pause(7000);
-		browser.elements('css selector', '.product-list .product-card', function (result) {
-			this.assert.equal(result.value.length, 48);
-		});
+		browser.waitForElementPresent(".product-list > div:nth-child(48)",7000);
 		browser.end();
 	},
 	'Check Tag in search box for URL with tag filter': function (browser) {
@@ -39,7 +36,7 @@ module.exports = {
 	},
 	'Check for Bag images slider': function (browser) {
 		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible('.product-list .product-card:first-child', 7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 		browser.click('.product-list .product-card:first-child .owl-next');
 		browser.waitForElementVisible(".product-list .product-card:first-child .owl-wrapper > .owl-item:nth-child(2) img", 2000);
 		browser.click('.product-list .product-card:first-child .owl-next');
@@ -48,35 +45,14 @@ module.exports = {
 	},
 	'Side filter should open': function (browser) {
 		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible("#side-filter-trigger",7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 		browser.click("#side-filter-trigger");
-		browser.pause(2000);
-		browser.expect.element('#side-filter').to.have.css('right').which.equals("0px");
-	},
-	'Check for Help tour': function (browser) {
-		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible('.btn-floating.help > .icon', 7000);
-
-		browser.click('.btn-floating.help > .icon');
-
-		browser.waitForElementVisible(".enjoyhint-step-1", 4000);
-		browser.click('.enjoyhint_next_btn');
-
-		browser.waitForElementVisible(".enjoyhint-step-2", 2000);
-		browser.click('.enjoyhint_next_btn');
-
-		browser.waitForElementVisible(".enjoyhint-step-3", 2000);
-		browser.click('.enjoyhint_next_btn');
-
-		browser.waitForElementVisible(".enjoyhint-step-4", 2000);
-		browser.click('.enjoyhint_skip_btn');
-
-		browser.end();
+		browser.expect.element('#side-filter').to.have.css('right').which.equals("0px").before(2000);
 	},
 	'Check for Min Max prices': function (browser) {
 		browser.url("https://bagcupid.com/app/minprice/100/maxprice/800");
 
-		browser.waitForElementVisible('.btn-show-more', 7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 
 		browser.getText("#lbl_min_price", function (result) {
 			this.assert.equal(result.value, "100");
@@ -97,11 +73,31 @@ module.exports = {
 	},
 	'Popup should close': function (browser) {
 		browser.url(process.env.BAG_CUPID_URL);
-		browser.waitForElementVisible('.product-list .product-card:first-child .owl-wrapper > .owl-item:first-child > a', 7000);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
 		browser.click('.product-list .product-card:first-child .owl-wrapper > .owl-item:first-child > a');
 		browser.waitForElementVisible("#product-popup > .mfp-close", 5000);
 		browser.click("#product-popup > .mfp-close");
 		browser.waitForElementNotPresent("#product-popup", 2000);
+		browser.end();
+	},
+	'Check for Help tour': function (browser) {
+		browser.url(process.env.BAG_CUPID_URL);
+		browser.waitForElementVisible('button.btn-show-more', 7000);
+
+		browser.click('.btn-floating.help > .icon');
+
+		browser.waitForElementVisible(".enjoyhint-step-1", 2000);
+		browser.click('.enjoyhint_next_btn');
+
+		browser.waitForElementVisible(".enjoyhint-step-2", 2000);
+		browser.click('.enjoyhint_next_btn');
+
+		browser.waitForElementVisible(".enjoyhint-step-3", 2000);
+		browser.click('.enjoyhint_next_btn');
+
+		browser.waitForElementVisible(".enjoyhint-step-4", 2000);
+		browser.click('.enjoyhint_skip_btn');
+
 		browser.end();
 	},
 };
