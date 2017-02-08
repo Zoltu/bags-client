@@ -14,7 +14,7 @@
 	</script>
 	<!-- End Azure Application Insights -->
 	<!-- Google Analytics -->
-	
+	<script  src="//www.google-analytics.com/cx/api.js?experiment=jxsgV08eRyCrlfifsfUD2w"></script>
 	<script>
 		window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
 		ga('create', 'UA-66024947-3', 'auto');
@@ -22,6 +22,8 @@
 		ga('require', 'outboundLinkTracker', {});
 		ga('require', 'pageVisibilityTracker', {});
 		ga('send', 'pageview');
+		// Ask Google Analytics which variation to show the user.
+		function chosenVariation() { return cxApi.chooseVariation(); }
 	</script>
 
 	<script async src='https://www.google-analytics.com/analytics.js'></script>
