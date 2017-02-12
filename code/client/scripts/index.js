@@ -129,6 +129,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
     }
 });
 
+Handlebars.registerHelper('showOldBuyButton', function (options) {
+    return (chosenVariation() == "0") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper('showNewBuyButton', function (options) {
+    return (chosenVariation() == "1") ? options.fn(this) : options.inverse(this);
+});
+
 Handlebars.registerHelper('isLengthOf', function (array, operator, length, options) {
     if (array != null) {
         switch (operator) {
@@ -1227,6 +1235,7 @@ function RemoveSelectedTags(data) {
 function SkipHelpTourNotification() {
     localStorage.setItem("helptour-seen", "true");
     $(".help-slider-clone").popover("destroy");
+    $(".help-btn-mobile").popover("destroy");
 }
 
 function ExecuteSmartSearch(txtbox) {
