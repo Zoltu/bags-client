@@ -163,15 +163,14 @@ Handlebars.registerHelper('countMoreLength', function (array) {
     return array.length - visibleTagCnt;
 });
 
-Handlebars.registerHelper('titleCase', function (name) {
-    name = EscapeSingleQuote(name);
-    return name.substr(0, 1).toUpperCase() + name.substr(1);
+Handlebars.registerHelper('escape', function (name) {
+    return escape(name);
 });
 
 Handlebars.registerHelper('getBrandName', function (tags) {
     var brand = Enumerable.From(tags).Where(w=>w.category.name == "brand").Select(s => s.name).ToArray();
     if (brand.length > 0) {
-        return brand[0];
+        return escape(brand[0]);
     }
     else{
         return "";
@@ -1532,8 +1531,4 @@ function ShowingBrandFilter() {
 
 function HideBanner() {
     $("html, body").stop().animate({ scrollTop: $(".banner").height() - 25}, '500');    
-}
-
-function EscapeSingleQuote(str) {
-    return str.replace(/'/g, "\\'");
 }
