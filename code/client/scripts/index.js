@@ -1182,7 +1182,7 @@ function ShareLink(channel, entity, product_imgurl, product_name, product_brand)
         case 'pinterest':
             var pin_desc = "";
             if (entity == "product")
-                pin_desc = encodeURIComponent((product_brand != "" ? product_brand + ": " : "") + product_name);
+                pin_desc = encodeURIComponent((product_brand != "" ? product_brand + ": " : "")) + product_name;
             else if (entity == "search") {
                 var path = window.location.pathname;
 
