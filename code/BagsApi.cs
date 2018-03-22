@@ -13,7 +13,7 @@ namespace Zoltu.Bags.Client
 
 		public BagsApi()
 		{
-			httpClient.BaseAddress = new Uri("https://bags-api.zoltu.com/api/");
+			httpClient.BaseAddress = new Uri("https://api.bagcupid.com/api/");
 			httpClient.DefaultRequestHeaders.Accept.Clear();
 			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
