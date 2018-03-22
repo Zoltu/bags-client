@@ -1,4 +1,4 @@
-﻿var g_api = 'https://bags-api.zoltu.com',
+﻿var g_api = 'https://api.bagcupid.com',
 g_result_from_product_id = 1,
 g_tags = [], //holds selected tags
 g_tagsData = [], //holds tags data returned by api
