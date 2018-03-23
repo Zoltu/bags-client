@@ -7,7 +7,7 @@ set -e
 trap "docker-compose down" EXIT
 
 # run the tests
-docker-compose down
-docker-compose up -d --build --force-recreate --remove-orphans selenium-hub selenium-firefox-node selenium-chrome-node bagcupid
-docker-compose build bagcupid-tests
-docker-compose run bagcupid-tests
+#docker-compose down
+#docker-compose up -d --build --force-recreate --remove-orphans selenium-hub selenium-firefox-node selenium-chrome-node bagcupid
+#docker-compose build bagcupid-tests
+#docker-compose run bagcupid-tests
